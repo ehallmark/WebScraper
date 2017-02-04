@@ -18,11 +18,12 @@ class Product < ActiveRecord::Base
 
         puts "URL FOR: ",url
 
-        request = Net::HTTP::Get.new uri
+        request = uri.request_uri
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true
-        request.add_field('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.6)')
-        results = http.request request
+        request.add_field('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0')
+        request.add_field('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8')
+        results = http.get(request)
 
         puts results.body.inspect
 
