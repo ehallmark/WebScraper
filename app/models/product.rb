@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
 
 
   def self.seedProducts
-    base_url = "http://www.amazon.com/s/field-keywords="
+    base_url = "https://www.amazon.com/s/field-keywords="
     base_uri = URI.parse(URI.escape(base_url))
 
     semaphore = Mutex.new # For multithreading
@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
 
     # Set up HTTP Streaming
     Net::HTTP.start(base_uri.host, base_uri.port) do |http|
-
+        http.use_ssl=true
       # List all possible nums
       ["chair"].each do |keyword|
 
