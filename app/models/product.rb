@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
 
 
   def self.seedProducts
-    base_url = "https://www.amazon.com/s/field-keywords="
+    base_url = "http://www.amazon.com/s/field-keywords="
     base_uri = URI.parse(URI.escape(base_url))
 
     semaphore = Mutex.new # For multithreading
