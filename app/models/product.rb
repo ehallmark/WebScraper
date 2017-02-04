@@ -1,12 +1,13 @@
 class Product < ActiveRecord::Base
 
 
-  def self.seedEvents
-    base_url = "http://www.amazon.com/s/field-keywords="
+  def self.seedProducts
+    base_url = "https://www.amazon.com/s/field-keywords="
     base_uri = URI.parse(URI.escape(base_url))
 
     semaphore = Mutex.new # For multithreading
     threads = []
+    puts "STARTING TO STREAM..."
 
     # Set up HTTP Streaming
     Net::HTTP.start(base_uri.host, base_uri.port) do |http|
