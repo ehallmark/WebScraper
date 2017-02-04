@@ -10,7 +10,6 @@ class Product < ActiveRecord::Base
     puts "STARTING TO STREAM..."
 
     # Set up HTTP Streaming
-    Net::HTTP.start(base_uri.host, base_uri.port, use_ssl: true) do |http|
       # List all possible nums
       ["chair"].each do |keyword|
 
@@ -20,6 +19,8 @@ class Product < ActiveRecord::Base
         puts "URL FOR: ",url
 
         request = Net::HTTP::Get.new uri
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = true
         request.add_field('User-Agent', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.6)')
         results = http.request request
 
@@ -30,9 +31,7 @@ class Product < ActiveRecord::Base
         next unless results.kind_of? Net::HTTPSuccess
 
         puts "SUCCESSFULLY FOUND: #{keyword}"
-
       end
-    end
     threads.each do |t| t.join end
   end
 end
