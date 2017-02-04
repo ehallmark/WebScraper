@@ -25,7 +25,8 @@ class Product < ActiveRecord::Base
 
         puts results.body.inspect
 
-        puts "Successful?", results.kind_of? Net::HTTPSuccess
+        puts "Successful?"
+        puts results.kind_of? Net::HTTPSuccess
         next unless results.kind_of? Net::HTTPSuccess
 
         puts "SUCCESSFULLY FOUND: #{keyword}"
