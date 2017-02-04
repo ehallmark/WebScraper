@@ -18,6 +18,8 @@ class Product < ActiveRecord::Base
         url = [base_url,"#{keyword}"].join # Generate URL
         uri = URI.parse(URI.escape(url))
 
+        puts "URL FOR: ",url
+
         request = Net::HTTP::Get.new uri
         results = http.request request
 
