@@ -10,8 +10,7 @@ class Product < ActiveRecord::Base
     puts "STARTING TO STREAM..."
 
     # Set up HTTP Streaming
-    Net::HTTP.start(base_uri.host, base_uri.port) do |http|
-        http.use_ssl=true
+    Net::HTTP.start(base_uri.host, base_uri.port, use_ssl: true) do |http|
       # List all possible nums
       ["chair"].each do |keyword|
 
