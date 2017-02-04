@@ -23,11 +23,10 @@ class Product < ActiveRecord::Base
         request = Net::HTTP::Get.new uri
         results = http.request request
 
-        puts results.inspect
+        puts results.body.inspect
         next unless results.kind_of? Net::HTTPSuccess
 
         puts "SUCCESSFULLY FOUND: #{keyword}"
-        puts results.body
 
       end
     end
