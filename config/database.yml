@@ -73,7 +73,7 @@ development:
   encoding: unicode
   database: scraper_development
   username: postgres
-  password:
+  password: MyCloud
   port: 5432
 
 test:
@@ -82,5 +82,5 @@ test:
   encoding: unicode
   database: scraper_test
   username: postgres
-  password:
+  password: MyCloud
   port: 5432
