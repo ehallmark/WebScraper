@@ -70,15 +70,17 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: amazon_scraper_development
+  database: scraper_development
   pool: 5
   username: postgres
-  password: 
+  password: Evan1040
+  port: 5432
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: amazon_scraper_test
+  database: scraper_test
   pool: 5
   username: postgres
-  password:
+  password: Evan1040
+  port: 5432
