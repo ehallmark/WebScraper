@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
         http.use_ssl = true
         request.add_field('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0')
         request.add_field('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8')
-        results = http.get(request)
+        results = http.request(request)
 
         puts results.body.inspect
 
